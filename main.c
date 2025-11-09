@@ -2,7 +2,7 @@
 #include "contact.h"
 
 int main() {
-    int choice;
+    char choice;
     AddressBook addressBook;
     initialize(&addressBook); // Initialize the address book
 
@@ -19,36 +19,36 @@ int main() {
         printf("[7]-> Exit\n");
         printf("--------------------------------------------------------------------------------------\n");
         printf("Enter your choice: ");
-        scanf("%d", &choice);
-        printf("======================================================================================\n");
+        scanf("\n%c", &choice);
+        printf("\n======================================================================================\n");
         switch (choice) {
-            case 1:
+            case '1':
                 createContact(&addressBook);
                 break;
-            case 2:
+            case '2':
                 searchContact(&addressBook, 1, 0);
                 break;
-            case 3:
+            case '3':
                 editContact(&addressBook);
                 break;
-            case 4:
+            case '4':
                 deleteContact(&addressBook);
                 break;
-            case 5:          
+            case '5':          
                 listContacts(&addressBook);
                 break;
-            case 6:
+            case '6':
                 printf("Saving And Exiting\n");
                 saveAndExit(&addressBook);
                 break;
-            case 7:
+            case '7':
                 printf("Exiting the program!\n");
                 break;
 
             default:
-                printf("Invalid choice. Please try again.\n");
+                printf("Invalid choice. Enter a valid choice.\n");
         }
-    } while (choice != 7);
+    } while (choice != '7');
     
        return 0;
 }

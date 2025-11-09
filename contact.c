@@ -124,6 +124,7 @@ void createContact(AddressBook *addressBook)
 {
 	/* Define the logic to create a Contacts */
 		//save name
+		printf("                     CREATE CONTACT\n");
 		char Name[50];
 		printf("Enter the name: ");
 		scanf(" %[^\n]", Name);
@@ -169,7 +170,7 @@ void createContact(AddressBook *addressBook)
 //function to search contacts
 int searchContact(AddressBook *addressBook, int where, int serial_no[]) 
 {
-	int choice;
+	char choice;
 	do
 	{     
 		int flag = 0, s = 0;
@@ -178,12 +179,12 @@ int searchContact(AddressBook *addressBook, int where, int serial_no[])
 		printf("[1] -> Search by name\n[2] -> Search by number\n[3] -> Search by email\n[4] -> Back\n");
 		printf("--------------------------------------------------------------------------------------\n");
 		printf("Enter your choice: ");
-		scanf("%d", &choice);
-		printf("--------------------------------------------------------------------------------------\n");
+		scanf("%c", &choice);
+		printf("\n--------------------------------------------------------------------------------------\n");
 		switch(choice)
 		{
 	//to search by name		
-			case 1: char sname[50];
+			case '1': char sname[50];
 					printf("Enter the name to search: ");
 					scanf(" %[^\n]", sname);
 					printf("======================================================================================\n");
@@ -203,7 +204,7 @@ int searchContact(AddressBook *addressBook, int where, int serial_no[])
 					printf("======================================================================================\n");
 					break;
 	//to search by phone				
-			case 2: char sphone[20];
+			case '2': char sphone[20];
 					printf("Enter the phone to search: ");
 					scanf("%s", sphone);
 					printf("======================================================================================\n");
@@ -222,7 +223,7 @@ int searchContact(AddressBook *addressBook, int where, int serial_no[])
 					printf("======================================================================================\n");
 					break;
 	//to search by email				
-			case 3: char semail[50];
+			case '3': char semail[50];
 					printf("Enter the email to search: ");
 					scanf("%s", semail);
 					printf("======================================================================================\n");
@@ -240,7 +241,7 @@ int searchContact(AddressBook *addressBook, int where, int serial_no[])
 					}
 					printf("======================================================================================\n");
 					break;
-			case 4:return 1;		
+			case '4':return 1;		
 			default:printf("Not a valid choice\n");
 					printf("--------------------------------------------------------------------------------------\n");
 					goto search;
@@ -275,19 +276,19 @@ void editContact(AddressBook *addressBook)
 		printf("Enter the Sl no of the contact to edit: ");
 		int sl;
 		scanf("%d", &sl);
-		printf("--------------------------------------------------------------------------------------\n");
+		printf("\n--------------------------------------------------------------------------------------\n");
 		if(serial_no[sl-1] <= addressBook->contactCount)
 		do
 		{
 			printf("[1] -> Edit Name\n[2] -> Edit Phone\n[3] -> Edit Email\n[4] -> exit\n");
 			printf("--------------------------------------------------------------------------------------\n");
 			printf("Enter your choice: ");
-			int option;
-			scanf("%d", &option);
-			printf("--------------------------------------------------------------------------------------\n");
+			char option;
+			scanf("%c", &option);
+			printf("\n--------------------------------------------------------------------------------------\n");
 			switch(option)
 			{
-				case 1 :char ename[50];
+				case '1' :char ename[50];
 						printf("Enter the new name: ");
 						scanf(" %[^\n]", ename);
 						printf("--------------------------------------------------------------------------------------\n");
@@ -295,7 +296,7 @@ void editContact(AddressBook *addressBook)
 						printf("Name Edited successfully!!\n");
 						printf("--------------------------------------------------------------------------------------\n");
 						break;
-				case 2 :char ephone[20];
+				case '2' :char ephone[20];
 						do
 						{
 							printf("Enter the new phone: ");
@@ -310,7 +311,7 @@ void editContact(AddressBook *addressBook)
 							}
 						} while (1);
 						break;
-				case 3 :char eemail[50];
+				case '3' :char eemail[50];
 						do
 						{
 							printf("Enter the new email: ");
@@ -326,7 +327,7 @@ void editContact(AddressBook *addressBook)
 
 						} while (1);
 						break;
-				case 4 : return;		
+				case '4' : return;		
 				default:printf("Invalid option!!\n");
 						printf("--------------------------------------------------------------------------------------\n");
 			}
@@ -355,17 +356,17 @@ select:	printf("Enter the Sl no of the contact to delete: ");
 		printf("--------------------------------------------------------------------------------------\n");
 		if(serial_no[sl - 1] <= addressBook->contactCount)
 		{
-			int conf;
+			char conf;
 		del:	printf("Are you sure delete %s\n", addressBook->contacts[serial_no[sl - 1]].name);
 				printf("--------------------------------------------------------------------------------------\n");
 				printf("[1] -> Yes\n[2] -> No\n");
 				printf("--------------------------------------------------------------------------------------\n");
 				printf("Enter your choice: ");
-				scanf("%d", &conf);
+				scanf("%c", &conf);
 				printf("--------------------------------------------------------------------------------------\n");
 				switch(conf)
 				{
-					case 1 :for(int i = serial_no[sl - 1]; i < addressBook->contactCount - 1;i++)
+					case '1' :for(int i = serial_no[sl - 1]; i < addressBook->contactCount - 1;i++)
 							{
 								addressBook->contacts[i] = addressBook->contacts[i + 1];
 						    }
@@ -373,9 +374,9 @@ select:	printf("Enter the Sl no of the contact to delete: ");
 							printf("Deleted succesfully!!\n");
 							printf("--------------------------------------------------------------------------------------\n");
 							break;
-					case 2 :break;
+					case '2' :break;
 					default:printf("Enter a valid option!!\n");
-							printf("--------------------------------------------------------------------------------------\n");
+							printf("\n--------------------------------------------------------------------------------------\n");
 					goto del;
 				}
 		}
